@@ -3,6 +3,12 @@ public class StackX{
   private int top;
   private int maxsize;
   private int[] ArraySize;
+  
+  public StackX(int i){
+    maxsize=i;
+    ArraySize=new int[maxsize];
+    top = -1;
+  }
 
 
 }
