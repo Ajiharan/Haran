@@ -1,5 +1,8 @@
 public class StackX{
 
+  private int top;
+  private int maxsize;
+  private int[] ArraySize;
 
 
 }
