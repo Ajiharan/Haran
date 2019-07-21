@@ -9,17 +9,10 @@ public class NodeStackY<Item> {
         Stack.push(4);
         Stack.push(5);
         Stack.push(5);
-        System.out.println("Testing :");
+     
         Stack.print();  			// prints : 5 4 3
 
-       /* Integer x = Stack.pop(); 	// x = 5
-        Stack.push(1);
-        Stack.push(8);
-       
-        System.out.println("Testing :");
-        Stack.print();				// prints : 8 1 4 3
-
-        System.out.println("Testing :");*/
+      
         
  }
 	
@@ -64,7 +57,9 @@ public class NodeStackY<Item> {
 		return data;
 	}
 	
-	
+	public Item peek() {
+      	  return (Item) NodeStackY.head.getData();
+	}
 	
 	private  NodeStackY(Item item) {
 		this.data=item;
