@@ -1,14 +1,128 @@
-public class StackX{
+package Node;
 
-  private int top;
-  private int maxsize;
-  private int[] ArraySize;
-  
-  public StackX(int i){
-    maxsize=i;
-    ArraySize=new int[maxsize];
-    top = -1;
-  }
+public class NodeStackY<Item> { 
+	
+	public static void main(String[] args) {
+        NodeStackY<Integer> Stack = new NodeStackY<Integer>();
 
+        Stack.push(3);
+        Stack.push(4);
+        Stack.push(5);
+        Stack.push(5);
+        System.out.println("Testing :");
+        Stack.print();  			// prints : 5 4 3
+
+       /* Integer x = Stack.pop(); 	// x = 5
+        Stack.push(1);
+        Stack.push(8);
+       
+        System.out.println("Testing :");
+        Stack.print();				// prints : 8 1 4 3
+
+        System.out.println("Testing :");*/
+        
+ }
+	
+	private Item data;
+	
+	private NodeStackY<?> next;
+	private NodeStackY<?> previous;
+	private static NodeStackY<?> head;
+	private static int count=0;
+	
+	public void push(Item item) {
+		
+		NodeStackY<?> node=new NodeStackY<Item>(item);
+		if(this.isEmpty()) {
+			
+			node.setPrevious(null);
+			node.setNext(null);
+			NodeStackY.setHead(node);
+		}
+		else {
+			node.setPrevious(NodeStackY.head);
+			
+			NodeStackY.setHead(node);
+			head.setNext(node);
+		}
+		
+		count ++;
+	}
+	
+	public void print() {
+		for(NodeStackY node=head; node !=null; node=node.getPrevious() ) {
+			System.out.println(node.data);
+		}
+	}
+	
+	public Item pop() {
+		data=(Item) NodeStackY.getHead().getData();
+		head.setNext(null);
+		head.setHead(head.getPrevious());
+		count --;
+		
+		return data;
+	}
+	
+	
+	
+	private  NodeStackY(Item item) {
+		this.data=item;
+	}
+	
+	public NodeStackY() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public boolean isEmpty() {
+		if(count == 0) {
+			return true;
+		}
+		return false;
+	}
+	
+
+	public Item getData() {
+		return data;
+	}
+
+
+	public void setData(Item data) {
+		this.data = data;
+	}
+
+
+	public NodeStackY<?> getNext() {
+		return next;
+	}
+
+
+	public void setNext(NodeStackY<?> next) {
+		this.next = next;
+	}
+
+
+	public NodeStackY<?> getPrevious() {
+		return previous;
+	}
+
+
+	public void setPrevious(NodeStackY<?> previous) {
+		this.previous = previous;
+	}
+
+
+	public static NodeStackY<?> getHead() {
+		return head;
+	}
+
+
+	public static  void setHead(NodeStackY<?> he) {
+		head = he;
+	}
+	
+	
+	
+	
 
 }
