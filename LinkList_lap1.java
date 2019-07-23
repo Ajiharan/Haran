@@ -16,7 +16,9 @@ public class LinkX {
 }
 
 
-class LinkList {
+package link;
+
+public class LinkList {
 	
 	private LinkX first;
 	
@@ -57,13 +59,44 @@ class LinkList {
 		}
 		
 	}
+	
+	public LinkX delete(int id) {
+		LinkX current=first;
+		LinkX prev=first;
+		
+		while(current !=null) {
+			
+			if(current.iData==id) {
+				if(first==current) {
+					first=current.next;
+					return current;
+				}
+				else {
+				
+				
+					prev.next=current.next;
+					return current;
+				}
+				
+			}
+			else {
+				prev=current;
+				current=current.next;
+			}
+			
+			
+		}
+		
+		return null;
+	}
 
 }
+
  class MainX {
 	public static void main(String [] args) {
 	
 		
-		LinkList link=new LinkList();
+	LinkList link=new LinkList();
 		link.insertFirst(10);
 		link.insertFirst(20);
 		link.insertFirst(30);
@@ -71,12 +104,14 @@ class LinkList {
 		System.out.println("Before Delete");
 		link.displayList();
 		System.out.println("After Delete");
-		link.deleteFirst();
-		link.deleteFirst();
+		
+		link.delete(10);
+		link.delete(40);
 		
 		
 		
 		link.displayList();
+		
 		
 		
 		
