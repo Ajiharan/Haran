@@ -1,0 +1,151 @@
+public class LinkX {
+	public LinkX next;
+	public int iData;
+	
+	
+	public LinkX(int id) {
+		next=null;
+		iData=id;
+	}
+	
+	public void display()  {
+		
+		System.out.println(iData);
+		
+		
+	}
+
+}
+//------------
+class LinkListX {
+	private LinkX first;
+	
+	public LinkListX() {
+		first=null;
+	}
+	
+	public LinkX search(int id) {
+		LinkX current=first;
+		while(current != null) {
+			if(current.iData==id) {
+				return current;
+			}
+			current=current.next;
+		}
+		return null;
+	}
+	
+	public void insertLast(int id) {
+		
+		if(first==null) {
+			insertFirst(id);
+		}
+		else {
+			LinkX newlink=new LinkX(id);
+			
+			LinkX current=first;
+			LinkX prev=first;
+			while(current !=null) {
+				
+				prev=current;
+				current=current.next;
+			}
+			
+			prev.next=newlink;
+		}
+	}
+	
+	public LinkX insert(int id,int data) {
+		LinkX current=first;
+	
+		while(current !=null) {
+			if(current.iData==id) {
+				LinkX newlink=new LinkX(data);
+				newlink.next=current.next;
+				current.next=newlink;
+				return current;
+					
+			}
+			else {
+				current=current.next;
+			}
+			
+		}
+		return null;
+	}
+	
+	public LinkX delete(int id) {
+		LinkX current=first;
+		LinkX prev=first;
+		while(current !=null) {
+			if(current.iData==id) {
+				if(current == prev) {
+					
+					first=first.next;
+					
+				}
+				else {
+					prev.next=current.next;
+				}
+				return current;
+			}
+			else {
+				prev=current;
+				current=current.next;
+			}
+		}
+		return null;
+	}
+	
+	public void insertFirst(int id) {
+		LinkX newlink=new LinkX(id);
+		
+		newlink.next=first;
+		first=newlink;
+	}
+	public void displayList() {
+		LinkX current=first;
+		
+		while(current !=null) {
+			System.out.print(current.iData+" , ");
+			current=current.next;
+		}
+	}
+	
+	public void deleteFirst() {
+		first=first.next;
+	}
+	
+	public boolean isEmpty() {
+		if(first == null) {
+			return true;
+		}
+		return false;
+	}
+
+}
+//-------------
+
+public class Main {
+	public static void main(String [] args) {
+		
+		
+			LinkListX list=new LinkListX();
+			
+			list.insertLast(20);
+			list.insertLast(30);
+			list.insertLast(40);
+			
+			list.insertLast(96);
+			
+		
+			list.displayList();
+		
+		
+		
+		
+		
+		
+	}
+}
+
